@@ -1,0 +1,458 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "My First Task API",
+        "version": "0.1"
+    },
+    "paths": {
+        "/api/register": {
+            "post": {
+                "tags": [
+                    "Task"
+                ],
+                "summary": "Get Register",
+                "operationId": "8e4e3cb7b46126f4696379d3c7eeb4ad",
+                "requestBody": {
+                    "description": "Register here",
+                    "required": true,
+                    "content": {
+                        "application/x-www-form-urlencoded": {
+                            "schema": {
+                                "required": [
+                                    "name",
+                                    "email",
+                                    "password",
+                                    "c_password"
+                                ],
+                                "properties": {
+                                    "name": {
+                                        "description": "User Name",
+                                        "type": "string"
+                                    },
+                                    "email": {
+                                        "description": "User Email",
+                                        "type": "string"
+                                    },
+                                    "password": {
+                                        "description": "User password",
+                                        "type": "string"
+                                    },
+                                    "c_password": {
+                                        "description": "Confirm password",
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    },
+                    "400": {
+                        "description": "Invalid input"
+                    }
+                }
+            }
+        },
+        "/api/login": {
+            "post": {
+                "tags": [
+                    "Task"
+                ],
+                "summary": "Get Login",
+                "operationId": "222b2625838e3c57e017987f73598fda",
+                "requestBody": {
+                    "description": "Login here",
+                    "required": true,
+                    "content": {
+                        "application/x-www-form-urlencoded": {
+                            "schema": {
+                                "required": [
+                                    "email",
+                                    "password"
+                                ],
+                                "properties": {
+                                    "email": {
+                                        "description": "User Email",
+                                        "type": "string"
+                                    },
+                                    "password": {
+                                        "description": "User password",
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    },
+                    "400": {
+                        "description": "Invalid input"
+                    }
+                }
+            }
+        },
+        "/api/task": {
+            "get": {
+                "tags": [
+                    "Task"
+                ],
+                "summary": "Get Task List",
+                "operationId": "1d77f726c38d61605b2ed38ef79a7545",
+                "responses": {
+                    "200": {
+                        "description": "success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "id": {
+                                            "type": "number",
+                                            "example": 1
+                                        },
+                                        "title": {
+                                            "type": "string",
+                                            "example": "Test Task"
+                                        },
+                                        "description": {
+                                            "type": "text",
+                                            "example": "This is new test task"
+                                        },
+                                        "status": {
+                                            "type": "enum",
+                                            "example": "pending"
+                                        },
+                                        "updated_at": {
+                                            "type": "string",
+                                            "example": "2021-12-11T09:25:53.000000Z"
+                                        },
+                                        "created_at": {
+                                            "type": "string",
+                                            "example": "2021-12-11T09:25:53.000000Z"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Records not found"
+                    }
+                },
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ]
+            }
+        },
+        "/api/createTask": {
+            "post": {
+                "tags": [
+                    "Task"
+                ],
+                "summary": "Create Task",
+                "operationId": "6fe46e2a58b9165b8674f2184d7386ac",
+                "requestBody": {
+                    "description": "Create task here",
+                    "required": true,
+                    "content": {
+                        "application/x-www-form-urlencoded": {
+                            "schema": {
+                                "required": [
+                                    "title",
+                                    "description",
+                                    "status"
+                                ],
+                                "properties": {
+                                    "title": {
+                                        "description": "Title",
+                                        "type": "string"
+                                    },
+                                    "description": {
+                                        "description": "Description",
+                                        "type": "string"
+                                    },
+                                    "status": {
+                                        "description": "Status",
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "id": {
+                                            "type": "number",
+                                            "example": 1
+                                        },
+                                        "title": {
+                                            "type": "string",
+                                            "example": "title"
+                                        },
+                                        "description": {
+                                            "type": "text",
+                                            "example": "description"
+                                        },
+                                        "status": {
+                                            "type": "enum",
+                                            "example": "status"
+                                        },
+                                        "updated_at": {
+                                            "type": "string",
+                                            "example": "2021-12-11T09:25:53.000000Z"
+                                        },
+                                        "created_at": {
+                                            "type": "string",
+                                            "example": "2021-12-11T09:25:53.000000Z"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid input"
+                    }
+                },
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ]
+            }
+        },
+        "/api/getTask/{id}": {
+            "get": {
+                "tags": [
+                    "Task"
+                ],
+                "summary": "Get Task",
+                "operationId": "f89a5a0b831da2de3f21d4f4b1d723c0",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "id": {
+                                            "type": "number",
+                                            "example": 1
+                                        },
+                                        "title": {
+                                            "type": "string",
+                                            "example": "title"
+                                        },
+                                        "description": {
+                                            "type": "text",
+                                            "example": "description"
+                                        },
+                                        "status": {
+                                            "type": "enum",
+                                            "example": "status"
+                                        },
+                                        "updated_at": {
+                                            "type": "string",
+                                            "example": "2021-12-11T09:25:53.000000Z"
+                                        },
+                                        "created_at": {
+                                            "type": "string",
+                                            "example": "2021-12-11T09:25:53.000000Z"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Record not found"
+                    }
+                },
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ]
+            }
+        },
+        "/api/updateTask/{id}": {
+            "post": {
+                "tags": [
+                    "Task"
+                ],
+                "summary": "Update Task",
+                "operationId": "308470db8fd438c6c3c096d6b4c04ac9",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "description": "Create task here",
+                    "required": true,
+                    "content": {
+                        "application/x-www-form-urlencoded": {
+                            "schema": {
+                                "required": [
+                                    "title",
+                                    "description",
+                                    "status"
+                                ],
+                                "properties": {
+                                    "title": {
+                                        "description": "Title",
+                                        "type": "string"
+                                    },
+                                    "description": {
+                                        "description": "Description",
+                                        "type": "string"
+                                    },
+                                    "status": {
+                                        "description": "Status",
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "id": {
+                                            "type": "number",
+                                            "example": 1
+                                        },
+                                        "title": {
+                                            "type": "string",
+                                            "example": "title"
+                                        },
+                                        "description": {
+                                            "type": "text",
+                                            "example": "description"
+                                        },
+                                        "status": {
+                                            "type": "enum",
+                                            "example": "status"
+                                        },
+                                        "updated_at": {
+                                            "type": "string",
+                                            "example": "2021-12-11T09:25:53.000000Z"
+                                        },
+                                        "created_at": {
+                                            "type": "string",
+                                            "example": "2021-12-11T09:25:53.000000Z"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid input"
+                    }
+                },
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ]
+            }
+        },
+        "/api/deleteTask/{id}": {
+            "put": {
+                "tags": [
+                    "Task"
+                ],
+                "summary": "Delete Task",
+                "operationId": "84c59b0526f11dd6b80a3f8a87eff398",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "msg": {
+                                            "type": "string",
+                                            "example": "delete task success"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Record not found"
+                    }
+                },
+                "security": [
+                    {
+                        "bearer": []
+                    }
+                ]
+            }
+        }
+    },
+    "components": {
+        "securitySchemes": {
+            "bearer": {
+                "type": "apiKey",
+                "description": "Enter token in format (Bearer <token>)",
+                "name": "Authorization",
+                "in": "header"
+            }
+        }
+    }
+}
